@@ -1,9 +1,13 @@
 package main
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"github.com/gofiber/fiber/v2"
+)
 
 func main() {
-	app := fiber.New()
+	app := fiber.New(fiber.Config{
+		Prefork: true,
+	})
 
 	app.Get("/", handler)
 
@@ -14,6 +18,7 @@ func main() {
 	app.Get("/wildcard/*", wildCardHandler)
 
 	app.Listen(":3000")
+
 }
 
 func handler(c *fiber.Ctx) error {
