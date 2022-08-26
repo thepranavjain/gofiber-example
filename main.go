@@ -7,6 +7,8 @@ func main() {
 
 	app.Get("/", handler)
 
+	app.Static("/fe/", "./public")
+
 	app.Get("/with-param/:name?", withParamHandler)
 
 	app.Get("/wildcard/*", wildCardHandler)
